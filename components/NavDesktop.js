@@ -1,42 +1,10 @@
 import Link from "next/link";
+import { routes } from "@/routes";
 import { useRouter } from "next/router";
 import styled from "styled-components"
 
 export default function NavDesktop() {
   const router = useRouter();
-
-  const routes = [
-    {
-      title: "Home",
-      href: "/",
-      // active: 'router.pathname === "/"',
-      scroll: true,
-    },
-    {
-      title: "About",
-      href: "/about",
-      // active: 'router.pathname === "/about"',
-      scroll: true,
-    },
-    {
-      title: "Blog",
-      href: "/blog",
-      // active: "router.pathname === '/blog'",
-      scroll: true,
-    },
-    {
-      title: "Action",
-      href: "/action",
-      // active: "router.pathname === '/action'",
-      scroll: true,
-    },
-    {
-      title: "Donate",
-      href: "/#donate",
-      // active: "router.pathname.includes('/#donate')",
-      scroll: false,
-    }
-  ];
 
   return (
     <div className="flex flex-row-reverse">
@@ -48,7 +16,7 @@ export default function NavDesktop() {
           key={title}
           href={href}
           scroll={scroll}
-          className="flex-row-reverse items-center gap-1 hover:text-neutral-400 transition-all"
+          className="items-center gap-3 hover:text-neutral-400 transition-all"
           >
             {title}
           </StyledNavLink>
