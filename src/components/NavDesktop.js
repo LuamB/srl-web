@@ -1,46 +1,101 @@
 import Link from "next/link";
-import { routes } from "@/routes";
 import { useRouter } from "next/router";
-import styled from "styled-components"
+// import { routes } from "../pages/routes";
 
 export default function NavDesktop() {
   const router = useRouter();
 
+  const routes = [
+    {
+      title: "Home",
+      href: "/",
+      scroll: true,
+    },
+    {
+      title: "About",
+      href: "/about",
+      scroll: true,
+    },
+    {
+      title: "Blog",
+      href: "/blog",
+      scroll: true,
+    },
+    {
+      title: "Action",
+      href: "/action",
+      scroll: true,
+    },
+    {
+      title: "Donate",
+      href: "/#donate",
+      scroll: false,
+    }
+  ];
+
   return (
     <div className="flex flex-row-reverse">
-      <ul className="hidden lg:flex lg:items-center gap-6 text-sm">
-      {routes.map((route) => {
-        const {scroll, href, title} = route;
-        return (
-          <li key={title}>
-            <StyledNavLink 
-            href={href}
-            scroll={scroll}
-            className="items-center gap-3 hover:text-neutral-400 transition-all"
-            >
-              {title}
-            </StyledNavLink>
-          </li>
-        );
-      })}
+      <ul className="hidden lg:flex lg:items-center gap-5 text-sm">
+        {routes.map((route) => {
+          const { scroll, href, title } = route;
+          return (
+            <li key={title}>
+              <Link
+                href={href}
+                scroll={scroll}
+                className={`flex items-center gap-1 hover:text-neutral-400 transition-all ${
+                  router.pathname === href ? "underline" : ""
+                }`}
+              >
+                {title}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
-  )
+  );
 };
 
-export const StyledNavLink = styled(Link)`
-color: #fff;
-text-decoration: none;
-padding: 1rem;
 
-&:hover {
-  color: #ddd;
-}
+// export default function NavDesktop() {
+//   const router = useRouter();
 
-&.active {
-  text-decoration: underline;
-}
-`;
+//   return (
+//     <div className="flex flex-row-reverse">
+//       <ul className="hidden lg:flex lg:items-center gap-6 text-sm">
+//       {routes.map((route) => {
+//         const {scroll, href, title} = route;
+//         return (
+//           <li key={title}>
+//             <NavLink 
+//             href={href}
+//             scroll={scroll}
+//             className="items-center gap-3 hover:text-neutral-400 transition-all"
+//             >
+//               {title}
+//             </NavLink>
+//           </li>
+//         );
+//       })}
+//       </ul>
+//     </div>
+//   )
+// };
+
+// export const StyledNavLink = styled(Link)`
+// color: #fff;
+// text-decoration: none;
+// padding: 1rem;
+
+// &:hover {
+//   color: #ddd;
+// }
+
+// &.active {
+//   text-decoration: underline;
+// }
+// `;
 
 // const StyledNavList= styled.ul`
 // display: flex;
