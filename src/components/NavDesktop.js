@@ -12,14 +12,15 @@ export default function NavDesktop() {
       {routes.map((route) => {
         const {scroll, href, title} = route;
         return (
-          <StyledNavLink 
-          key={title}
-          href={href}
-          scroll={scroll}
-          className="items-center gap-3 hover:text-neutral-400 transition-all"
-          >
-            {title}
-          </StyledNavLink>
+          <li key={title}>
+            <StyledNavLink 
+            href={href}
+            scroll={scroll}
+            className="items-center gap-3 hover:text-neutral-400 transition-all"
+            >
+              {title}
+            </StyledNavLink>
+          </li>
         );
       })}
       </ul>

@@ -1,6 +1,6 @@
 import { StyledNavLink } from "./NavDesktop";
 import Image from "next/image";
-import logoIcon from "../public/SRL-round.svg"
+import logoIcon from "../../public/SRL-round.svg"
 // import styled from "styled-components";
 
 // const StyledLogo = styled(Image)``;
