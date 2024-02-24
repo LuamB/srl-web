@@ -3,13 +3,32 @@
 @import "tailwindcss/utilities";
 
 @layer base {
+  html {
+    box-sizing: border-box;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
   h1 {
     @apply text-2xl;
   }
   h2 {
     @apply text-xl;
   }
+  h3 {
+    @apply text-lg;
+  }
 }
+
+
+/* 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} 
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -40,3 +59,4 @@ body {
     text-wrap: balance;
   }
 }
+ */

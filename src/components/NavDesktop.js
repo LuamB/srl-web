@@ -43,7 +43,7 @@ export default function NavDesktop() {
               <Link
                 href={href}
                 scroll={scroll}
-                className={`flex items-center gap-1 hover:text-neutral-400 transition-all ${
+                className={`items-center gap-1 hover:text-neutral-400 transition-all  ${
                   router.pathname === href ? "underline" : ""
                 }`}
               >

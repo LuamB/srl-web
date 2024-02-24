@@ -1,38 +1,33 @@
-import { Inter } from "next/font/google";
-import SectionHeading from "../components/SectionHeading"
-
-const inter = Inter({ subsets: ["latin"] });
+import SectionHeading from "../components/SectionHeading";
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+    <section className="flex-col min-h-screen items-center justify-between space-y-4"
+      // className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
-      <h1>Alliance Solidarity with Refugees in Libya</h1>
+      <div className="border-solid border border-neutral-200 mx-1 p-4">
+        <h1 className="mx-2">Alliance Solidarity with Refugees in Libya</h1>
+      </div>
 
-      <section className="my-20">
-        {/* About section content */}
-        <SectionHeading>About</SectionHeading>
+      <div className="h-60 border-solid border-b border-neutral-200 mx-1 p-1">
+        <SectionHeading>ABOUT</SectionHeading>
         {/* ... about content */}
-      </section>
+      </div>
 
-      <section className="my-20">
-        {/* Blog section content */}
-        <SectionHeading>Blog</SectionHeading>
+      <div className="h-60 border-solid border-b border-neutral-200 mx-1 p-1">
+        <SectionHeading>BLOG</SectionHeading>
         {/* ... blog content */}
-      </section>
+      </div>
 
-      <section className="my-20">
-        {/* Action section content */}
-        <SectionHeading>Action</SectionHeading>
+      <div className="h-60 border-solid border-b border-neutral-200 mx-1 p-1">
+        <SectionHeading>ACTION</SectionHeading>
         {/* ... action content */}
-      </section>
+      </div>
 
-      <section className="my-20">
-        {/* Donate section content */}
-        <SectionHeading>Donate</SectionHeading>
+      <div className="h-60 border-solid border-b border-neutral-200 mx-1 p-1">
+        <SectionHeading>DONATE</SectionHeading>
         {/* ... donate content */}
-      </section>
-  </main>
+      </div>
+  </section>
   );
 }
