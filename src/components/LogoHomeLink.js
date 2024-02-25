@@ -8,6 +8,7 @@ export default function LogoHomeLink() {
 			<Link href={"/"}>
 				<Image
 					src={logoIcon}
+					priority
 					alt="Logo of the alliance Solidarity with Refugees in Libya serves as link to home page"
 				/>
 			</Link>

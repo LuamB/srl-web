@@ -5,7 +5,7 @@ import NavMobile from "./NavMobile";
 
 export default function Header() {
 	return (
-		<div className="flex relative w-full h-10 mx-3 my-3 bg-transparent">
+		<div className="flex relative w-full h-10 mb-3 p-3 bg-neutral-900">
 			<LogoHomeLink />
 			<NavDesktop />
 			<NavMobile />

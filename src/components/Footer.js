@@ -32,8 +32,8 @@ export default function Footer() {
 	// },
 
 	return (
-		<div className="flex w-full h-16 mx-2 mt-2 p-2 bg-neutral-900">
-			<ul className="lg:flex lg:items-center w-auto h-auto lg:gap-5 sm:gap-x-3 text-sm">
+		<div className="flex items-center w-full h-16 mt-2 p-3 bg-neutral-900">
+			<ul className="flex items-center w-auto h-auto gap-6 text-sm">
 				{routes.map((route) => {
 					const { scroll, href, title } = route;
 					return (
