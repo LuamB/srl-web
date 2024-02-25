@@ -3,25 +3,31 @@
 @import "tailwindcss/utilities";
 
 @layer base {
-  html {
-    box-sizing: border-box;
-  }
+	html {
+		box-sizing: border-box;
+	}
 
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  h3 {
-    @apply text-lg;
-  }
+	*,
+	*:before,
+	*:after {
+		box-sizing: inherit;
+	}
+
+	body,
+	main {
+		@apply w-screen min-h-screen bg-neutral-800 text-neutral-200;
+	}
+
+	h1 {
+		@apply text-3xl;
+	}
+	h2 {
+		@apply text-2xl;
+	}
+	h3 {
+		@apply text-xl;
+	}
 }
-
 
 /* 
 @layer utilities {

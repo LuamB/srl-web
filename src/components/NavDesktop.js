@@ -3,60 +3,60 @@ import { useRouter } from "next/router";
 // import { routes } from "../pages/routes";
 
 export default function NavDesktop() {
-  const router = useRouter();
+	const router = useRouter();
 
-  const routes = [
-    {
-      title: "Home",
-      href: "/",
-      scroll: true,
-    },
-    {
-      title: "About",
-      href: "/about",
-      scroll: true,
-    },
-    {
-      title: "Blog",
-      href: "/blog",
-      scroll: true,
-    },
-    {
-      title: "Action",
-      href: "/action",
-      scroll: true,
-    },
-    {
-      title: "Donate",
-      href: "/#donate",
-      scroll: false,
-    }
-  ];
+	const routes = [
+		{
+			title: "Home",
+			href: "/",
+			scroll: true,
+		},
+		{
+			title: "About",
+			href: "/#about",
+			scroll: false,
+		},
+		{
+			title: "Blog",
+			href: "/blog",
+			scroll: true,
+		},
+		{
+			title: "Donate",
+			href: "/#donate",
+			scroll: false,
+		},
+	];
+	// // Skipt Action page in MVP
+	// {
+	//   title: "Action",
+	//   href: "/action",
+	//   scroll: true,
+	// },
 
-  return (
-    <div className="flex flex-row-reverse">
-      <ul className="hidden lg:flex lg:items-center gap-5 text-sm">
-        {routes.map((route) => {
-          const { scroll, href, title } = route;
-          return (
-            <li key={title}>
-              <Link
-                href={href}
-                scroll={scroll}
-                className={`items-center gap-1 hover:text-neutral-400 transition-all  ${
-                  router.pathname === href ? "underline" : ""
-                }`}
-              >
-                {title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-};
-
+	return (
+		<div className="w-auto h-auto absolute inset-y-0 right-2 pr-2">
+			<ul className="hidden lg:flex lg:items-center gap-5 text-sm px-2 py-2 bg-transparent">
+				{routes.map((route) => {
+					const { scroll, href, title } = route;
+					return (
+						<li key={title}>
+							<Link
+								href={href}
+								scroll={scroll}
+								className={`items-center gap-1 text-neutral-200 hover:text-neutral-400 transition-all  ${
+									router.pathname === href ? "underline" : ""
+								}`}
+							>
+								{title}
+							</Link>
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	);
+}
 
 // export default function NavDesktop() {
 //   const router = useRouter();
@@ -68,7 +68,7 @@ export default function NavDesktop() {
 //         const {scroll, href, title} = route;
 //         return (
 //           <li key={title}>
-//             <NavLink 
+//             <NavLink
 //             href={href}
 //             scroll={scroll}
 //             className="items-center gap-3 hover:text-neutral-400 transition-all"
@@ -107,4 +107,3 @@ export default function NavDesktop() {
 // <StyledNavLink href="/blog" active={router.pathname === "/blog"}>Blog</StyledNavLink>
 // <StyledNavLink href="/action" active={router.pathname === "/action"}>Action</StyledNavLink>
 // <StyledNavLink href="/#donate" scroll={false} active={router.pathname.includes("/#donate")}>Donate</StyledNavLink>
-
