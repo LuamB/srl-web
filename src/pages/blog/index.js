@@ -1,9 +1,9 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import useSWR from "swr";
-import SectionHeading from "@/components/SectionHeading";
+import SectionHeading from "../../components/SectionHeading";
 import { StyledLink } from "../../components/StyledLink";
-import BlogCard from "@/components/BlogCard";
+import BlogCard from "../../components/BlogCard";
 
 const List = styled.ul`
 	list-style: none;

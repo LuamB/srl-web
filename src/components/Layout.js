@@ -1,18 +1,25 @@
+import "../styles/globals";
 import Header from "./Header";
-// import NavDesktop from "./NavDesktop";
-// import NavMobile from "./NavMobile";
 import Footer from "./Footer";
 import { Ubuntu_Mono } from "next/font/google";
 
-const ubuntuMono = Ubuntu_Mono({ weight: ["400", "700"], subsets: ["latin"] });
+const ubuntuMono = Ubuntu_Mono({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-ubuntu-mono",
+});
 
 export default function Layout({ children }) {
 	return (
 		<>
 			{console.log("Layout re-rendered")}
 			<Header />
-			<main className={`main ${ubuntuMono.className}`}>{children}</main>
+			<main className={`main ${ubuntuMono.variable} font-mono`}>
+				{children}
+			</main>
 			<Footer />
 		</>
 	);
 }
+
+// <main className={`main ${ubuntuMono.className} font-mono`}>
