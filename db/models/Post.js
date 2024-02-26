@@ -1,15 +1,20 @@
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
+var slug = require("mongoose-slug-updater");
+mongoose.plugin(slug);
 
 const postSchema = new Schema(
 	{
-		slug: {
-			type: String,
-			required: true,
-		},
 		title: {
 			type: String,
+			unique: true,
+			required: true,
+		},
+		slug: {
+			type: String,
+			slug: "title",
+			unique: true,
 			required: true,
 		},
 		author: {

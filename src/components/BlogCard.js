@@ -1,6 +1,6 @@
 import Link from "next/link.js";
 import styled from "styled-components";
-import { StyledImage } from "./StyledImage.js";
+import { StyledImage } from "./StyledImage";
 
 const Article = styled.article`
 	border: 5px solid black;
@@ -42,17 +42,29 @@ const ScreenReaderOnly = styled.span`
 	border-width: 0;
 `;
 
-export default function BlogCard({ title, image, content, id }) {
+export default function BlogCard({ slug, title, image, content }) {
+	// Split the content by sentence endings (".", "!", "?").
+	const sentences = content?.split(/[.?!]/);
+	// Take the first 5 sentences for the preview.
+	const partialContent = sentences?.slice(0, 5).join(". ");
+
 	return (
 		<Article>
 			<Figure>
 				<ImageContainer>
-					<StyledImage src={image} fill alt="" />
+					<StyledImage
+						src={image}
+						fill
+						sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+						alt=""
+					/>
 				</ImageContainer>
 				<figcaption>{title}</figcaption>
 			</Figure>
-			<p>{content}</p>
-			<Link href={`places/${id}`} passHref legacyBehavior>
+			<p>{partialContent}</p>
+			<Link href={`posts/${slug}`} passHref legacyBehavior>
 				<Anchor>
 					<ScreenReaderOnly>More Info</ScreenReaderOnly>
 				</Anchor>
