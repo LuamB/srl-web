@@ -7,15 +7,20 @@
 		box-sizing: border-box;
 	}
 
-	*,
+	/* *,
 	*:before,
 	*:after {
 		box-sizing: inherit;
+	} */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
 	}
 
 	body,
 	main {
-		@apply w-screen min-h-screen bg-neutral-800 text-neutral-200;
+		@apply w-screen min-h-screen m-0 bg-neutral-800 text-neutral-200;
 	}
 
 	h1 {
