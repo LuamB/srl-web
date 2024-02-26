@@ -1,13 +1,26 @@
 import "@/styles/globals.css";
+import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps, session }) {
 	return (
-		<Layout>
-			<SessionProvider session={session} r>
-				<Component {...pageProps} />
-			</SessionProvider>
-		</Layout>
+		<SWRConfig
+			value={{
+				fetcher: async (...args) => {
+					const response = await fetch(...args);
+					if (!response.ok) {
+						throw new Error(`Request with ${JSON.stringify(args)} failed.`);
+					}
+					return await response.json();
+				},
+			}}
+		>
+			<Layout>
+				<SessionProvider session={session} r>
+					<Component {...pageProps} />
+				</SessionProvider>
+			</Layout>
+		</SWRConfig>
 	);
 }

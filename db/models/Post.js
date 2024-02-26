@@ -4,13 +4,20 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema(
 	{
-		slug: String,
+		slug: {
+			type: String,
+			required: true,
+		},
 		title: {
 			type: String,
 			required: true,
 		},
-		author: String,
-		image: String,
+		author: {
+			type: String,
+		},
+		image: {
+			type: String,
+		},
 		content: {
 			type: String,
 			required: true,
