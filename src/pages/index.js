@@ -7,7 +7,7 @@ export default function Home() {
 			// className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
 		>
 			<div className="border-solid border border-neutral-200 p-4">
-				<h1>Join us and show Solidarity with Refugees in Libya</h1>
+				<h1>Solidarity with Refugees in Libya</h1>
 			</div>
 
 			<div className="h-60 border-solid border-b border-neutral-200 p-2">

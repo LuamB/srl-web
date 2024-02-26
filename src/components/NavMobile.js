@@ -43,7 +43,7 @@ export default function NavMobile() {
 	return (
 		<div
 			ref={ref}
-			className="lg:hidden w-auto h-auto absolute inset-y-0 right-2 mx-1"
+			className="lg:hidden w-auto h-auto absolute inset-y-0 right-2"
 		>
 			<Hamburger toggled={isOpen} size={20} toggle={setOpen} />
 			<AnimatePresence>
@@ -77,7 +77,7 @@ export default function NavMobile() {
 											href={href}
 											scroll={scroll}
 											className={
-												"flex items-center justify-between w-full p-5 rounded-xl bg-neutral-950  text-neutral-200"
+												"flex items-center justify-between w-full p-5 rounded-xl bg-neutral-950  text-neutral-200 z-40"
 											}
 										>
 											{title}
