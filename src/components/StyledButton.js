@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledButton = styled.button`
-	background-color: yellow;
+	background-color: #f8cc49;
 	padding: 0.8rem;
 	border-radius: 0.6rem;
 	color: black;
@@ -13,7 +13,7 @@ export const StyledButton = styled.button`
 	${({ variant }) =>
 		variant === "delete" &&
 		css`
-			background-color: firebrick;
+			background-color: "#991b1b"; //bg-red-800 firebrick
 			color: white;
 		`}
 `;

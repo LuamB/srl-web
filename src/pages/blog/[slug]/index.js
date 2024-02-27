@@ -33,7 +33,7 @@ export default function DetailsPage() {
 	const { isReady } = router;
 	const { slug } = router.query;
 	const {
-		// data: { place, comments } = {},
+		// data: { post, comments } = {},
 		data,
 		isLoading,
 		error,
@@ -54,11 +54,18 @@ export default function DetailsPage() {
 
 	return (
 		<>
-			<Link href={"/blog"} passHref legacyBehavior>
-				<StyledLink justifySelf="start">back</StyledLink>
-			</Link>
+			<div className="relative mb-6">
+				<Link
+					href="/blog"
+					passHref
+					legacyBehavior
+					className="absolute inset-0 left-2"
+				>
+					<StyledLink>back</StyledLink>
+				</Link>
+			</div>
 			<ImageContainer>
-				<StyledImage
+				{/* <StyledImage
 					src={data?.post.image}
 					priority
 					fill
@@ -66,20 +73,15 @@ export default function DetailsPage() {
               (max-width: 1200px) 50vw,
               33vw"
 					alt=""
-				/>
+				/> */}
 			</ImageContainer>
-			<h2>
-				{data?.place.name}, {data?.place.location}
-			</h2>
-			<Link href={data?.place.mapURL} passHref legacyBehavior>
-				<StyledLocationLink>Location on Google Maps</StyledLocationLink>
-			</Link>
-			<p>{data?.place.description}</p>
+			<h2>{data.post[0].title}</h2>
+			<p>{data.post[0].content}</p>
 			<ButtonContainer>
-				<Link href={`/posts/${slug}/edit`} passHref legacyBehavior>
+				<Link href={`/blog/${slug}/edit`} passHref legacyBehavior>
 					<StyledLink>Edit</StyledLink>
 				</Link>
-				<StyledButton onClick={deletePlace} type="button" variant="delete">
+				<StyledButton onClick={deletePost} type="button" variant="delete">
 					Delete
 				</StyledButton>
 			</ButtonContainer>
@@ -89,6 +91,6 @@ export default function DetailsPage() {
 
 /* 
 <Comments
-  locationName={data?.place.name}
-  comments={data?.place.comments}
+  locationName={data?.post.name}
+  comments={data?.post.comments}
 > */

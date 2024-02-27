@@ -26,7 +26,7 @@ export default function CreatePostPage() {
 			},
 			body: JSON.stringify(post),
 		});
-
+		console.log("response", response);
 		if (response.ok) {
 			// mutate();
 			router.push("/blog");

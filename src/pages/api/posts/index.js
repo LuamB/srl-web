@@ -11,10 +11,10 @@ export default async function handler(request, response) {
 	} else if (request.method === "POST") {
 		try {
 			const postData = request.body;
-			postData.slug = postData.title.replace(" ", "-").toLowerCase(); //add slug key with slugified title
+			postData.slug = postData.title.replace(" ", "-").toLowerCase(); //add slug key with slugyfied title
 			console.log("postData ", postData);
-			const newPost = await Post.create(postData);
 
+			const newPost = await Post.create(postData);
 			console.log("newPost ", newPost);
 			return response
 				.status(201) // status code for successful post creation

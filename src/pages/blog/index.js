@@ -35,6 +35,8 @@ export default function BlogPage() {
 	const { data, isLoading, error } = useSWR("/api/posts", { fallbackData: [] });
 	console.log("data in BlogPage", data);
 
+	if (isLoading) return <h2>Loading...</h2>;
+	if (error) return <h2>Error! </h2>;
 	// const postImages = [postImgOne, postImgTwo, postImgThree];
 	// console.log("postImgOne", postImgOne);
 	return (

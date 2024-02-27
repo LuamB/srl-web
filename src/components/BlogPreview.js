@@ -41,6 +41,11 @@ const ScreenReaderOnly = styled.span`
 	white-space: nowrap;
 	border-width: 0;
 `;
+// // RegEx to remove special character from title
+// title = title.toLowerCase()                   // Turn to lower
+//   .match(/[a-z0-9\s-]+/g)                     // Extract all alnum + hyphen and whitespace chunks
+//   .map(x => x.trim().split(/\s+/).join("-"))  // Trim the items, split with whitespace and join with a hyphen
+//   .join("-")                                  // Join the items with a hyphen
 
 export default function BlogPreview({ slug, title, content, image }) {
 	// Split the content by sentence endings (". ", "! ", "? ").
@@ -66,7 +71,7 @@ export default function BlogPreview({ slug, title, content, image }) {
 				<figcaption>{title}</figcaption>
 			</Figure>
 			<p>{partialContent}</p>
-			<Link href={`posts/${slug}`} passHref legacyBehavior>
+			<Link href={`blog/${slug}`} passHref legacyBehavior>
 				<Anchor>
 					<ScreenReaderOnly>More Info</ScreenReaderOnly>
 				</Anchor>

@@ -3,7 +3,7 @@ export default function TitleBar() {
 		<div className="flex flex-col border-solid border border-neutral-200 p-4">
 			<h1>Solidarity with Refugees in Libya</h1>
 			<br />
-			<p>
+			<p className="text-pretty">
 				Learn about the struggles of refugees in Libya, how it concerns you and{" "}
 				<br />
 				what you can do to help end the EU-financed atrocities in Libya and
