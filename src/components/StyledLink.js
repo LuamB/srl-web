@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const StyledLink = styled.a`
-	background-color: yellow;
+	/* background-color: yellow; */
 	padding: 0.8rem 1.5rem;
 	border-radius: 0.6rem;
 	color: black;
@@ -19,6 +19,6 @@ export const StyledLink = styled.a`
 		css`
 			text-align: center;
 			background-color: white;
-			border: 3px solid lightsalmon;
+			border: 3px solid yellow;
 		`}
 `;

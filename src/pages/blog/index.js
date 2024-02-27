@@ -63,7 +63,7 @@ export default function BlogPage() {
 					})}
 			</List>
 			<Link href="/blog/create" passHref legacyBehavior>
-				<FixedLink>+ post</FixedLink>
+				<FixedLink className="bg-yellow">+ post</FixedLink>
 			</Link>
 		</>
 	);

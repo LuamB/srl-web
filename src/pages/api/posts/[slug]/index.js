@@ -22,7 +22,7 @@ export default async function handler(request, response) {
 			return response.status(200).json({ post: post });
 
 		case "PATCH":
-			await Post.findByIdAndUpdate(slug, { $set: request.body });
+			await Post.findAndUpdate({ slug: slug }, { $set: request.body });
 			return response.status(200).json({ status: "Post updated" });
 
 		// case "POST":
