@@ -1,9 +1,12 @@
+import useSWR from "swr";
 import Link from "next/link.js";
 import styled from "styled-components";
-import useSWR from "swr";
-import SectionHeading from "../../components/SectionHeading";
+import BlogPreview from "../../components/BlogPreview";
 import { StyledLink } from "../../components/StyledLink";
-import BlogCard from "../../components/BlogCard";
+import SectionHeading from "../../components/SectionHeading";
+import postImgOne from "../../../public/evacuate-refugees-from-libya.svg";
+import postImgTwo from "../../../public/stop-italy-libya-mou.svg";
+import postImgThree from "../../../public/film-screening.svg";
 
 const List = styled.ul`
 	list-style: none;
@@ -25,19 +28,28 @@ const FixedLink = styled(StyledLink)`
 `;
 export default function BlogPage() {
 	const { data, isLoading, error } = useSWR("/api/posts", { fallbackData: [] });
-	console.log("data in blogpage", data);
+	console.log("data in BlogPage", data);
 
+	const images = [];
+
+	const postImages = [postImgOne, postImgTwo, postImgThree];
+	console.log("postImgOne", postImgOne);
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
 			<List role="list">
 				{data &&
-					data.map((post) => {
+					data.map((post, idx) => {
 						return (
 							<ListItem key={post.slug}>
-								<BlogCard
+								<BlogPreview
+									src={images[idx]}
+									fill
+									sizes="(max-width: 768px) 100vw,
+              		(max-width: 1200px) 50vw,
+              		33vw"
+									alt=""
 									title={post.title}
-									image={post.image}
 									content={post.content}
 									slug={post.slug}
 								/>

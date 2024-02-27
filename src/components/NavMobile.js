@@ -45,7 +45,7 @@ export default function NavMobile() {
 			ref={ref}
 			className="lg:hidden w-auto h-auto absolute inset-y-0 right-2"
 		>
-			<Hamburger toggled={isOpen} size={20} toggle={setOpen} />
+			<Hamburger toggled={isOpen} size={24} toggle={setOpen} />
 			<AnimatePresence>
 				{isOpen && (
 					<motion.div

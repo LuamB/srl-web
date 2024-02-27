@@ -1,6 +1,6 @@
 import Link from "next/link.js";
 import styled from "styled-components";
-import { StyledImage } from "./StyledImage";
+import { StyledImage } from "./StyledImage.js";
 
 const Article = styled.article`
 	border: 5px solid black;
@@ -42,9 +42,9 @@ const ScreenReaderOnly = styled.span`
 	border-width: 0;
 `;
 
-export default function BlogCard({ slug, title, image, content }) {
+export default function BlogPreview({ slug, title, content, image }) {
 	// Split the content by sentence endings (".", "!", "?").
-	const sentences = content?.split(/[.?!]/);
+	const sentences = content?.split(/[.?!]\s+/);
 	// Take the first 5 sentences for the preview.
 	const partialContent = sentences?.slice(0, 5).join(". ");
 

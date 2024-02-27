@@ -1,7 +1,7 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout.js";
 // import RootLayout from "./layout";
 
 export default function App({ Component, pageProps, session }) {

@@ -1,6 +1,5 @@
-import "../styles/globals";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./Header.js";
+import Footer from "./Footer.js";
 import { Ubuntu_Mono } from "next/font/google";
 
 const ubuntuMono = Ubuntu_Mono({

@@ -20,9 +20,6 @@ const postSchema = new Schema(
 		author: {
 			type: String,
 		},
-		image: {
-			type: String,
-		},
 		content: {
 			type: String,
 			required: true,
