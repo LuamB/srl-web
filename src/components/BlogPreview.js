@@ -43,7 +43,7 @@ const ScreenReaderOnly = styled.span`
 `;
 
 export default function BlogPreview({ slug, title, content, image }) {
-	// Split the content by sentence endings (".", "!", "?").
+	// Split the content by sentence endings (". ", "! ", "? ").
 	const sentences = content?.split(/[.?!]\s+/);
 	// Take the first 5 sentences for the preview.
 	const partialContent = sentences?.slice(0, 5).join(". ");
@@ -55,9 +55,11 @@ export default function BlogPreview({ slug, title, content, image }) {
 					<StyledImage
 						src={image}
 						fill
-						sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+						width={300}
+						height={300}
+						// sizes="(max-width: 768px) 100vw,
+						//   (max-width: 1200px) 50vw,
+						//   33vw"
 						alt=""
 					/>
 				</ImageContainer>
