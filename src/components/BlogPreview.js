@@ -52,7 +52,7 @@ export default function BlogPreview({ slug, title, content, image }) {
 		<Article>
 			<Figure>
 				<ImageContainer>
-					<StyledImage
+					{/* <StyledImage
 						src={image}
 						fill
 						width={300}
@@ -61,7 +61,7 @@ export default function BlogPreview({ slug, title, content, image }) {
 						//   (max-width: 1200px) 50vw,
 						//   33vw"
 						alt=""
-					/>
+					/> */}
 				</ImageContainer>
 				<figcaption>{title}</figcaption>
 			</Figure>

@@ -35,8 +35,8 @@ export default function BlogPage() {
 	const { data, isLoading, error } = useSWR("/api/posts", { fallbackData: [] });
 	console.log("data in BlogPage", data);
 
-	const postImages = [postImgOne, postImgTwo, postImgThree];
-	console.log("postImgOne", postImgOne);
+	// const postImages = [postImgOne, postImgTwo, postImgThree];
+	// console.log("postImgOne", postImgOne);
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
@@ -46,12 +46,12 @@ export default function BlogPage() {
 						return (
 							<ListItem key={post.slug}>
 								<BlogPreview
-									src={postImages[idx]}
-									fill
-									sizes="(max-width: 768px) 100vw,
-              		(max-width: 1200px) 50vw,
-              		33vw"
-									alt=""
+									// src={postImages[idx]}
+									// fill
+									// sizes="(max-width: 768px) 100vw,
+									// (max-width: 1200px) 50vw,
+									// 33vw"
+									// alt=""
 									title={post.title}
 									content={post.content}
 									slug={post.slug}
@@ -60,7 +60,7 @@ export default function BlogPage() {
 						);
 					})}
 			</List>
-			<Link href="/create" passHref legacyBehavior>
+			<Link href="/blog/create" passHref legacyBehavior>
 				<FixedLink>+ post</FixedLink>
 			</Link>
 		</>

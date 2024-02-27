@@ -39,7 +39,7 @@ export default function CreatePostPage() {
 		<>
 			<div className="relative mb-6">
 				<Link
-					href="/"
+					href="/blog"
 					passHref
 					legacyBehavior
 					className="absolute inset-0 left-2"

@@ -11,7 +11,7 @@ export default async function handler(request, response) {
 	} else if (request.method === "POST") {
 		try {
 			const postData = request.body;
-			postData.slug = postData.title.replace(" ", "-").toLowerCase();
+			postData.slug = postData.title.replace(" ", "-").toLowerCase(); //add slug key with slugified title
 			console.log("postData ", postData);
 			const newPost = await Post.create(postData);
 

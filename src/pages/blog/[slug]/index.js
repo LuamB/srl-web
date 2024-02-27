@@ -59,7 +59,7 @@ export default function DetailsPage() {
 			</Link>
 			<ImageContainer>
 				<StyledImage
-					src={data?.place.image}
+					src={data?.post.image}
 					priority
 					fill
 					sizes="(max-width: 768px) 100vw,
