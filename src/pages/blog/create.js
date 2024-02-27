@@ -1,9 +1,9 @@
+import useSWR from "swr";
 import Link from "next/link.js";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import Form from "../components/Form.js";
-import { StyledLink } from "../components/StyledLink.js";
-import useSWR from "swr";
+import Form from "../../components/Form";
+import { StyledLink } from "../../components/StyledLink.js";
 
 const StyledBackLink = styled(StyledLink)`
 	justify-self: flex-start;
@@ -37,10 +37,19 @@ export default function CreatePostPage() {
 
 	return (
 		<>
-			<h2 id="add-post">Add Post</h2>
-			<Link href="/" passHref legacyBehavior>
-				<StyledBackLink>back</StyledBackLink>
-			</Link>
+			<div className="relative mb-6">
+				<Link
+					href="/"
+					passHref
+					legacyBehavior
+					className="absolute inset-0 left-2"
+				>
+					<StyledBackLink>back</StyledBackLink>
+				</Link>
+			</div>
+			<h2 id="add-post" className="my-2">
+				Add Post
+			</h2>
 			<Form onSubmit={addPost} formName={"add-post"} />
 		</>
 	);

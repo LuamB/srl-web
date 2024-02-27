@@ -11,9 +11,13 @@ export default async function handler(request, response) {
 	} else if (request.method === "POST") {
 		try {
 			const postData = request.body;
+			postData.slug = postData.title.replace(" ", "-").toLowerCase();
+			console.log("postData ", postData);
 			const newPost = await Post.create(postData);
+
+			console.log("newPost ", newPost);
 			return response
-				.status(201) // status code for successful place posting
+				.status(201) // status code for successful post creation
 				.json({ status: "Post created", post: newPost });
 		} catch (error) {
 			console.error(error);

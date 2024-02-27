@@ -13,7 +13,8 @@ export default async function handler(request, response) {
 
 	switch (request.method) {
 		case "GET":
-			const post = await Post.findById(slug);
+			const post = await Post.find({ slug: slug });
+			console.log("post", post);
 
 			if (!post) {
 				return response.status(404).json({ status: "Not found" });
