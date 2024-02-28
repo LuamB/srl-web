@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
 
 export const FormContainer = styled.form`
 	display: grid;
@@ -26,7 +25,7 @@ export const Label = styled.label`
 	font-weight: bold;
 `;
 
-export default function Form({ onChange, onSubmit, formName, defaultData }) {
+export default function Form({ onSubmit, formName, defaultData }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target); //add field for imageURL to be saved in mongodb
@@ -41,7 +40,7 @@ export default function Form({ onChange, onSubmit, formName, defaultData }) {
 				id="title"
 				name="title"
 				type="text"
-				defaultValue={defaultData?.title}
+				// defaultValue={defaultData?.title}
 			/>
 			<Label htmlFor="content">Content</Label>
 			<Textarea
@@ -51,9 +50,12 @@ export default function Form({ onChange, onSubmit, formName, defaultData }) {
 				rows="50"
 				defaultValue={defaultData?.content}
 			></Textarea>
-			<StyledButton type="submit">
+			<button
+				type="submit"
+				className="bg-yellow text-black font-bold rounded-md p-2.5"
+			>
 				{defaultData ? "Update post" : "Add post"}
-			</StyledButton>
+			</button>
 		</FormContainer>
 	);
 }

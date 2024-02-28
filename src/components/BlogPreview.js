@@ -1,6 +1,6 @@
-import Link from "next/link.js";
+import Link from "next/link";
+import Image from "next/image";
 import styled from "styled-components";
-import { StyledImage } from "./StyledImage.js";
 
 const Article = styled.article`
 	border: 5px solid black;
@@ -41,15 +41,10 @@ const ScreenReaderOnly = styled.span`
 	white-space: nowrap;
 	border-width: 0;
 `;
-// // RegEx to remove special character from title
-// title = title.toLowerCase()                   // Turn to lower
-//   .match(/[a-z0-9\s-]+/g)                     // Extract all alnum + hyphen and whitespace chunks
-//   .map(x => x.trim().split(/\s+/).join("-"))  // Trim the items, split with whitespace and join with a hyphen
-//   .join("-")                                  // Join the items with a hyphen
 
 export default function BlogPreview({ slug, title, content, imageURL }) {
 	// Split the content by sentence endings (". ", "! ", "? ").
-	const sentences = content?.split(/[.?!]\s+/);
+	const sentences = content?.split(/(?<=[.!?])\s+/);
 	// Take the first 5 sentences for the preview.
 	const partialContent = sentences?.slice(0, 5).join(". ");
 
@@ -58,16 +53,7 @@ export default function BlogPreview({ slug, title, content, imageURL }) {
 			<Figure>
 				{imageURL && (
 					<ImageContainer>
-						<StyledImage
-							src={imageURL}
-							fill
-							// width={300}
-							// height={300}
-							// sizes="(max-width: 768px) 100vw,
-							//   (max-width: 1200px) 50vw,
-							//   33vw"
-							alt=""
-						/>
+						<Image src={imageURL} fill alt="" className="object-cover" />
 					</ImageContainer>
 				)}
 				<figcaption>{title}</figcaption>

@@ -1,28 +1,8 @@
 import useSWR from "swr";
 import Link from "next/link.js";
-import styled from "styled-components";
 import BlogPreview from "../../components/BlogPreview";
-import { StyledLink } from "../../components/StyledLink";
 import SectionHeading from "../../components/SectionHeading";
 
-const List = styled.ul`
-	list-style: none;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
-	padding-left: 0;
-`;
-
-const ListItem = styled.li`
-	position: relative;
-	width: 100%;
-`;
-const FixedLink = styled(StyledLink)`
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
-`;
 export default function BlogPage() {
 	// const { data, isLoading, error } = useSWR("/api/posts", { fallbackData: [] });
 	const { data, isLoading, error } = useSWR("/api/posts");
@@ -34,14 +14,17 @@ export default function BlogPage() {
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
-			<List role="list">
+			<ul
+				role="list"
+				className="list-none flex flex-col items-center gap-4 pl-0"
+			>
 				{data &&
 					data.map((post) => {
 						{
 							console.log("imageURL ", post.imageURL);
 						}
 						return (
-							<ListItem key={post.slug}>
+							<li key={post.slug} className="relative w-full">
 								<BlogPreview
 									imageURL={post.imageURL}
 									// sizes="(max-width: 768px) 100vw,
@@ -52,12 +35,14 @@ export default function BlogPage() {
 									content={post.content}
 									slug={post.slug}
 								/>
-							</ListItem>
+							</li>
 						);
 					})}
-			</List>
-			<Link href="/blog/create" passHref legacyBehavior>
-				<FixedLink className="bg-yellow">+ post</FixedLink>
+			</ul>
+			<Link href="/blog/create" passHref legacyBehavior className="relative">
+				<Link className="fixed bottom-8 right-8 p-2 md:p-4 bg-yellow-400 rounded-md font-bold text-black">
+					+ post
+				</Link>
 			</Link>
 		</>
 	);

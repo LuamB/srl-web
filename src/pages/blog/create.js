@@ -1,14 +1,8 @@
 import useSWR from "swr";
 import Link from "next/link.js";
-import styled from "styled-components";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { StyledLink } from "../../components/StyledLink.js";
 import Form, { Label, Input, FormContainer } from "../../components/Form.js";
-
-// const StyledBackLink = styled(StyledLink)`
-// 	justify-self: flex-start;
-// `;
 
 export default function CreatePostPage() {
 	const router = useRouter();
@@ -92,7 +86,9 @@ export default function CreatePostPage() {
 					legacyBehavior
 					className="absolute inset-0 left-2"
 				>
-					<StyledLink className="bg-yellow justify-self-start">back</StyledLink>
+					<Link className="justify-self-start bg-yellow font-bold text-black rounded-md p-2.5">
+						back
+					</Link>
 				</Link>
 			</div>
 			<h2 id="add-post" className="my-2">
@@ -114,7 +110,7 @@ export default function CreatePostPage() {
 			<Form
 				onChange={handleOnChange}
 				onSubmit={addPost}
-				method="post"
+				// method="post"
 				formName={"add-post"}
 				imageSrc={imageSrc}
 				uploadData={uploadData}
