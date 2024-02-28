@@ -3,8 +3,8 @@ import Link from "next/link.js";
 import styled from "styled-components";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Form from "../../components/Form";
 import { StyledLink } from "../../components/StyledLink.js";
+import Form, { Label, Input, FormContainer } from "../../components/Form";
 
 const StyledBackLink = styled(StyledLink)`
 	justify-self: flex-start;
@@ -35,6 +35,7 @@ export default function CreatePostPage() {
 		event.preventDefault();
 
 		const form = event.currentTarget;
+		console.log(form);
 		const fileInput = Array.from(form.elements).find(
 			({ name }) => name === "file"
 		);
@@ -45,7 +46,7 @@ export default function CreatePostPage() {
 			formData.append("file", file);
 		}
 
-		formData.append("upload_preset", "gyj9k80n>");
+		formData.append("upload_preset", "gyj9k80n");
 
 		const data = await fetch(
 			"https://api.cloudinary.com/v1_1/dkaiau7al/image/upload",
@@ -55,21 +56,27 @@ export default function CreatePostPage() {
 			}
 		).then((r) => r.json());
 
+		console.log(data.secure_url);
+
 		setImageSrc(data.secure_url);
 		setUploadData(data);
 	}
 
 	async function addPost(post) {
-		console.log("post", post);
+		// check post
+		const updatedObject = { ...post, imageURL: imageSrc };
+		console.log("updatedObject", updatedObject);
 
 		const response = await fetch("/api/posts", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(post),
+			body: JSON.stringify(updatedObject),
 		});
-		console.log("response", response);
+
+		console.log("response ", response);
+
 		if (response.ok) {
 			// mutate();
 			router.push("/blog");
@@ -91,6 +98,19 @@ export default function CreatePostPage() {
 			<h2 id="add-post" className="my-2">
 				Add Post
 			</h2>
+			<FormContainer onChange={handleOnChange} onSubmit={handleOnSubmit}>
+				<Label htmlFor="file">Image Upload</Label>
+				<Input
+					id="file"
+					name="file"
+					type="file"
+					className="bg-white"
+					// defaultValue={defaultData?.file}
+				/>
+				<button className="rounded-lg bg-neutral-500 text-black">
+					Upload File
+				</button>
+			</FormContainer>
 			<Form
 				onChange={handleOnChange}
 				onSubmit={addPost}

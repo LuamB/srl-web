@@ -18,9 +18,9 @@ export default function App({ Component, pageProps, session }) {
 			}}
 		>
 			<Layout>
-				<SessionProvider session={session}>
-					<Component {...pageProps} />
-				</SessionProvider>
+				{/* <SessionProvider session={session}> */}
+				<Component {...pageProps} />
+				{/* </SessionProvider> */}
 			</Layout>
 		</SWRConfig>
 	);

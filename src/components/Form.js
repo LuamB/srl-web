@@ -26,13 +26,7 @@ export const Label = styled.label`
 	font-weight: bold;
 `;
 
-export default function Form({
-	onChange,
-	onSubmit,
-	method,
-	formName,
-	defaultData,
-}) {
+export default function Form({ onChange, onSubmit, formName, defaultData }) {
 	function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target); //add field for imageURL to be saved in mongodb
@@ -57,17 +51,6 @@ export default function Form({
 				rows="50"
 				defaultValue={defaultData?.content}
 			></Textarea>
-			<Label htmlFor="file">Image Upload</Label>
-			<Input
-				id="file"
-				name="file"
-				type="file"
-				className="bg-white"
-				defaultValue={defaultData?.file}
-			/>
-			<button className="rounded-lg bg-neutral-500 text-black">
-				Upload File
-			</button>
 			<StyledButton type="submit">
 				{defaultData ? "Update post" : "Add post"}
 			</StyledButton>
