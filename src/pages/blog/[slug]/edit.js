@@ -38,8 +38,6 @@ export default function EditPage() {
 		}
 
 		formData.append("upload_preset", "gyj9k80n");
-		// check formData
-		console.log("formData ", formData);
 
 		const data = await fetch(
 			"https://api.cloudinary.com/v1_1/dkaiau7al/image/upload",
@@ -56,9 +54,6 @@ export default function EditPage() {
 	}
 
 	async function editPost(post) {
-		// chech data
-		console.log("Post to edit", post.post[0]);
-
 		try {
 			const response = await fetch(`/api/posts/${slug}`, {
 				method: "PATCH",
@@ -75,6 +70,8 @@ export default function EditPage() {
 			} else {
 				throw new Error("Failed to update post");
 			}
+			// chech data
+			console.log("Post to edit", post.post[0]);
 		} catch (error) {
 			console.error("Error:", error);
 		}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "react/image";
+import Image from "next/image";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
@@ -84,7 +84,7 @@ export default function DetailsPage() {
 				<button
 					onClick={deletePost}
 					type="button"
-					className="bg-yellow text-black font-bold rounded-md p-2.5"
+					className="bg-red-800 text-white font-bold rounded-md p-2.5"
 				>
 					Delete
 				</button>

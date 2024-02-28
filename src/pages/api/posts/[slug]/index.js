@@ -1,6 +1,5 @@
 import dbConnect from "../../../../../db/connect";
 import Post from "../../../../../db/models/Post";
-// import Comment from "../../../../db/models/Comment";
 
 export default async function handler(request, response) {
 	await dbConnect(); // initializing the connection
@@ -22,17 +21,11 @@ export default async function handler(request, response) {
 			return response.status(200).json({ post: post });
 
 		case "PATCH":
-			await Post.findAndUpdate({ slug: slug }, { $set: request.body });
+			await Post.findOneAndUpdate({ slug: slug }, { $set: request.body });
 			return response.status(200).json({ status: "Post updated" });
 
-		// case "POST":
-		// 	const newComment = request.body;
-		// 	await Comment.create(newComment);
-		// 	const updatedComment = [...existingComments, { ...newComment, id }];
-		// 	return response.status(201).json({ status: "Comment created." });
-
 		case "DELETE":
-			await Post.findByIdAndDelete(slug);
+			await Post.findOneAndDelete(slug);
 			return response
 				.status(200)
 				.json({ status: `Post ${slug} successfully deleted.` });
