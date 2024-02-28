@@ -27,9 +27,6 @@ export default function BlogPage() {
 							<li key={post.slug} className="relative w-full">
 								<BlogPreview
 									imageURL={post.imageURL}
-									// sizes="(max-width: 768px) 100vw,
-									// (max-width: 1200px) 50vw,
-									// 33vw"
 									alt=""
 									title={post.title}
 									content={post.content}
