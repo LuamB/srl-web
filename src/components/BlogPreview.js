@@ -47,7 +47,7 @@ const ScreenReaderOnly = styled.span`
 //   .map(x => x.trim().split(/\s+/).join("-"))  // Trim the items, split with whitespace and join with a hyphen
 //   .join("-")                                  // Join the items with a hyphen
 
-export default function BlogPreview({ slug, title, content, image }) {
+export default function BlogPreview({ slug, title, content, imageURL }) {
 	// Split the content by sentence endings (". ", "! ", "? ").
 	const sentences = content?.split(/[.?!]\s+/);
 	// Take the first 5 sentences for the preview.
@@ -56,18 +56,20 @@ export default function BlogPreview({ slug, title, content, image }) {
 	return (
 		<Article>
 			<Figure>
-				<ImageContainer>
-					{/* <StyledImage
-						src={image}
-						fill
-						width={300}
-						height={300}
-						// sizes="(max-width: 768px) 100vw,
-						//   (max-width: 1200px) 50vw,
-						//   33vw"
-						alt=""
-					/> */}
-				</ImageContainer>
+				{imageURL && (
+					<ImageContainer>
+						<StyledImage
+							src={imageURL}
+							fill
+							// width={300}
+							// height={300}
+							// sizes="(max-width: 768px) 100vw,
+							//   (max-width: 1200px) 50vw,
+							//   33vw"
+							alt=""
+						/>
+					</ImageContainer>
+				)}
 				<figcaption>{title}</figcaption>
 			</Figure>
 			<p>{partialContent}</p>

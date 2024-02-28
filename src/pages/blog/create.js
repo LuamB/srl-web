@@ -35,11 +35,9 @@ export default function CreatePostPage() {
 		event.preventDefault();
 
 		const form = event.currentTarget;
-		console.log(form);
 		const fileInput = Array.from(form.elements).find(
 			({ name }) => name === "file"
 		);
-
 		const formData = new FormData();
 
 		for (const file of fileInput.files) {
@@ -47,6 +45,8 @@ export default function CreatePostPage() {
 		}
 
 		formData.append("upload_preset", "gyj9k80n");
+		// check formData
+		console.log("formData ", formData);
 
 		const data = await fetch(
 			"https://api.cloudinary.com/v1_1/dkaiau7al/image/upload",
@@ -55,7 +55,7 @@ export default function CreatePostPage() {
 				body: formData,
 			}
 		).then((r) => r.json());
-
+		// check URL from cloudinary
 		console.log(data.secure_url);
 
 		setImageSrc(data.secure_url);
@@ -63,8 +63,8 @@ export default function CreatePostPage() {
 	}
 
 	async function addPost(post) {
-		// check post
 		const updatedObject = { ...post, imageURL: imageSrc };
+		// check postData with imageURL
 		console.log("updatedObject", updatedObject);
 
 		const response = await fetch("/api/posts", {

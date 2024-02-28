@@ -11,8 +11,15 @@ export default async function handler(request, response) {
 	} else if (request.method === "POST") {
 		try {
 			const postData = request.body;
-			postData.slug = postData.title.replace(" ", "-").toLowerCase(); //add slug key with slugyfied title
+			postData.slug = postData.title.toLowerCase
+				.replace(/\s+/g, "-") // Replace spaces with -
+				.replace(/[^\w\-]+/g, "") // Remove all non-word chars
+				.replace(/\-\-+/g, "-") // Replace multiple - with single -
+				.replace(/^-+/, "") // Trim - from start of text
+				.replace(/-+$/, ""); // Trim - from end of text; //add slug key with slugyfied title
+			// postData.imageURL = postData.file
 			console.log("postData ", postData);
+			console.log("postData.file ", postData.file);
 
 			const newPost = await Post.create(postData);
 			console.log("newPost ", newPost);

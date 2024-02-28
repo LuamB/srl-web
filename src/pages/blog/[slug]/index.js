@@ -22,12 +22,6 @@ const ButtonContainer = styled.section`
 	}
 `;
 
-const StyledLocationLink = styled(StyledLink)`
-	text-align: center;
-	background-color: white;
-	border: 3px solid yellow;
-`;
-
 export default function DetailsPage() {
 	const router = useRouter();
 	const { isReady } = router;
@@ -65,15 +59,15 @@ export default function DetailsPage() {
 				</Link>
 			</div>
 			<ImageContainer>
-				{/* <StyledImage
-					src={data?.post.image}
+				<StyledImage
+					src={data.post[0].imageURL}
 					priority
 					fill
 					sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
 					alt=""
-				/> */}
+				/>
 			</ImageContainer>
 			<h2>{data.post[0].title}</h2>
 			<p>{data.post[0].content}</p>
