@@ -28,8 +28,8 @@ export default function BlogPage() {
 	const { data, isLoading, error } = useSWR("/api/posts");
 	console.log("data in BlogPage", data);
 
-	if (isLoading) return <h2>Loading...</h2>;
-	if (error) return <h2>Error! </h2>;
+	if (isLoading) return <h2 className="align-center">Loading...</h2>;
+	if (error) return <h2 className="align-center">Error! </h2>;
 
 	return (
 		<>

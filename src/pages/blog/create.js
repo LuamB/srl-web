@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { StyledLink } from "../../components/StyledLink.js";
-import Form, { Label, Input, FormContainer } from "../../components/Form";
+import Form, { Label, Input, FormContainer } from "../../components/Form.js";
 
-const StyledBackLink = styled(StyledLink)`
-	justify-self: flex-start;
-`;
+// const StyledBackLink = styled(StyledLink)`
+// 	justify-self: flex-start;
+// `;
 
 export default function CreatePostPage() {
 	const router = useRouter();
@@ -79,7 +79,7 @@ export default function CreatePostPage() {
 
 		if (response.ok) {
 			// mutate();
-			router.push("/blog");
+			router.back(); //faster than router.push("/blog");
 		}
 	}
 
@@ -92,7 +92,7 @@ export default function CreatePostPage() {
 					legacyBehavior
 					className="absolute inset-0 left-2"
 				>
-					<StyledBackLink className="bg-yellow">back</StyledBackLink>
+					<StyledLink className="bg-yellow justify-self-start">back</StyledLink>
 				</Link>
 			</div>
 			<h2 id="add-post" className="my-2">

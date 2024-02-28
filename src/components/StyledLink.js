@@ -4,15 +4,9 @@ export const StyledLink = styled.a`
 	/* background-color: yellow; */
 	padding: 0.8rem 1.5rem;
 	border-radius: 0.6rem;
-	color: black;
 	text-decoration: none;
 	font-weight: bold;
-
-	${({ justifySelf }) =>
-		justifySelf &&
-		css`
-			justify-self: ${justifySelf};
-		`}
+	color: black;
 
 	${({ variant }) =>
 		variant === "outlined" &&

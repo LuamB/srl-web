@@ -34,8 +34,9 @@ export default function DetailsPage() {
 	} = useSWR(slug ? `/api/posts/${slug}` : null); // if slug is available, fetch the data, otherwise return null for id
 	console.log("data: ", data);
 
-	if (!isReady || isLoading) return <h2>Loading...</h2>;
-	if (error) return <h2>Error! </h2>;
+	if (!isReady || isLoading)
+		return <h2 className="align-center">Loading...</h2>;
+	if (error) return <h2 className="align-center">Error! </h2>;
 
 	async function deletePost() {
 		if (confirm("Are you sure you want to delete this post?")) {
