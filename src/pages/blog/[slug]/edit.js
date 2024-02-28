@@ -1,18 +1,17 @@
 import useSWR from "swr";
-import Link from "next/link.js";
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Form, { Label, Input, FormContainer } from "../../components/Form.js";
+import Form, { FormContainer, Label, Input } from "../../../components/Form.js";
 
-export default function CreatePostPage() {
-	const router = useRouter();
-	const { mutate } = useSWR("/api/posts");
-	const [imageSrc, setImageSrc] = useState();
+export default function EditPage() {
+	const router = useRouter(); // Add redirection logic using useRouter
+	const { isReady } = router;
+	const { slug } = router.query;
+	const [imageScr, setImageSrc] = useState();
 	const [uploadData, setUploadData] = useState();
-	/**
-	 * handleOnChange
-	 * @description Triggers when the file input changes (ex: when a file is selected)
-	 */
+	const { data: post, isLoading, error, mutate } = useSWR(`/api/posts/${slug}`);
+	console.log("post: ", post);
 
 	function handleOnChange(changeEvent) {
 		const reader = new FileReader();
@@ -39,8 +38,6 @@ export default function CreatePostPage() {
 		}
 
 		formData.append("upload_preset", "gyj9k80n");
-		// check formData
-		console.log("formData ", formData);
 
 		const data = await fetch(
 			"https://api.cloudinary.com/v1_1/dkaiau7al/image/upload",
@@ -56,44 +53,42 @@ export default function CreatePostPage() {
 		setUploadData(data);
 	}
 
-	async function addPost(post) {
-		const updatedObject = { ...post, imageURL: imageSrc };
-		// check postData with imageURL
-		console.log("updatedObject", updatedObject);
+	async function editPost(post) {
+		try {
+			const response = await fetch(`/api/posts/${slug}`, {
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(post),
+			});
 
-		const response = await fetch("/api/posts", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(updatedObject),
-		});
-
-		console.log("response ", response);
-
-		if (response.ok) {
-			// mutate();
-			router.back(); //faster than router.push("/blog");
+			if (response.ok) {
+				// mutate(`/api/posts/${slug}`, post);
+				mutate();
+				router.back(); // faster than router.push('/blog/${slug}')
+			} else {
+				throw new Error("Failed to update post");
+			}
+			// chech data
+			console.log("Post to edit", post.post[0]);
+		} catch (error) {
+			console.error("Error:", error);
 		}
 	}
 
+	if (!isReady || isLoading)
+		return <h2 className="align-center">Loading...</h2>;
+	if (error) return <h2 className="align-center">Error! </h2>;
+
 	return (
 		<>
-			<div className="relative mb-6">
-				<Link
-					href="/blog"
-					passHref
-					legacyBehavior
-					className="absolute inset-0 left-2"
-				>
-					<Link className="justify-self-start bg-yellow font-bold text-black rounded-md p-2.5">
-						back
-					</Link>
+			<h2 id="edit-post">Edit Post</h2>
+			<Link href={`/blog/${slug}`} passHref legacyBehavior>
+				<Link className="justify-self-start bg-yellow font-bold text-black rounded-md p-2.5">
+					back
 				</Link>
-			</div>
-			<h2 id="add-post" className="my-2">
-				Add Post
-			</h2>
+			</Link>
 			<FormContainer onChange={handleOnChange} onSubmit={handleOnSubmit}>
 				<Label htmlFor="file">Image Upload</Label>
 				<Input
@@ -108,12 +103,9 @@ export default function CreatePostPage() {
 				</button>
 			</FormContainer>
 			<Form
-				onChange={handleOnChange}
-				onSubmit={addPost}
-				// method="post"
-				formName={"add-post"}
-				imageSrc={imageSrc}
-				uploadData={uploadData}
+				onSubmit={editPost}
+				formName={"edit-post"}
+				defaultData={post?.post[0]} // if post obj exists, access post value, otherwise undefined
 			/>
 		</>
 	);

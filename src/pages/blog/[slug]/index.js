@@ -1,10 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
-import { StyledLink } from "../../../components/StyledLink";
-import { StyledButton } from "../../../components/StyledButton";
-import { StyledImage } from "../../../components/StyledImage";
 
 const ImageContainer = styled.div`
 	position: relative;
@@ -34,8 +32,9 @@ export default function DetailsPage() {
 	} = useSWR(slug ? `/api/posts/${slug}` : null); // if slug is available, fetch the data, otherwise return null for id
 	console.log("data: ", data);
 
-	if (!isReady || isLoading) return <h2>Loading...</h2>;
-	if (error) return <h2>Error! </h2>;
+	if (!isReady || isLoading)
+		return <h2 className="align-center">Loading...</h2>;
+	if (error) return <h2 className="align-center">Error! </h2>;
 
 	async function deletePost() {
 		if (confirm("Are you sure you want to delete this post?")) {
@@ -55,29 +54,40 @@ export default function DetailsPage() {
 					legacyBehavior
 					className="absolute inset-0 left-2"
 				>
-					<StyledLink>back</StyledLink>
+					<Link className="bg-yellow font-bold text-black rounded-md p-2.5">
+						back
+					</Link>
 				</Link>
 			</div>
-			<ImageContainer>
-				<StyledImage
-					src={data.post[0].imageURL}
-					priority
-					fill
-					sizes="(max-width: 768px) 100vw,
+			{data.post[0].imageUrl && (
+				<ImageContainer>
+					<Image
+						src={data.post[0].imageURL}
+						priority
+						fill
+						sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-					alt=""
-				/>
-			</ImageContainer>
+						alt=""
+						className="object-cover"
+					/>
+				</ImageContainer>
+			)}
 			<h2>{data.post[0].title}</h2>
 			<p>{data.post[0].content}</p>
 			<ButtonContainer>
 				<Link href={`/blog/${slug}/edit`} passHref legacyBehavior>
-					<StyledLink>Edit</StyledLink>
+					<Link className="bg-yellow font-bold text-black rounded-md p-2.5">
+						Edit
+					</Link>
 				</Link>
-				<StyledButton onClick={deletePost} type="button" variant="delete">
+				<button
+					onClick={deletePost}
+					type="button"
+					className="bg-red-800 text-white font-bold rounded-md p-2.5"
+				>
 					Delete
-				</StyledButton>
+				</button>
 			</ButtonContainer>
 		</>
 	);
