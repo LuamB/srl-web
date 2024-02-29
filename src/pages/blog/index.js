@@ -6,11 +6,11 @@ import SectionHeading from "../../components/SectionHeading";
 export default function BlogPage() {
 	// const { data, isLoading, error } = useSWR("/api/posts", { fallbackData: [] });
 	const { data, isLoading, error } = useSWR("/api/posts");
-	console.log("data in BlogPage", data);
 
 	if (isLoading) return <h2 className="align-center">Loading...</h2>;
 	if (error) return <h2 className="align-center">Error! </h2>;
 
+	// console.log("data in BlogPage", data);
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
@@ -24,7 +24,7 @@ export default function BlogPage() {
 							console.log("imageURL ", post.imageURL);
 						}
 						return (
-							<li key={post.slug} className="relative w-full">
+							<li key={post.slug} className="relative w-full text-pretty">
 								<BlogPreview
 									imageURL={post.imageURL}
 									alt=""

@@ -49,16 +49,18 @@ export default function BlogPreview({ slug, title, content, imageURL }) {
 	const partialContent = sentences?.slice(0, 5).join(". ");
 
 	return (
-		<Article>
+		<Article className="text-pretty">
 			<Figure>
 				{imageURL && (
 					<ImageContainer>
 						<Image src={imageURL} fill alt="" className="object-cover" />
 					</ImageContainer>
 				)}
-				<figcaption>{title}</figcaption>
+				<figcaption className="my-2">{title}</figcaption>
 			</Figure>
-			<p>{partialContent}</p>
+			<p className="font-mono font-extralight text-left text-pretty">
+				{partialContent}
+			</p>
 			<Link href={`blog/${slug}`} passHref legacyBehavior>
 				<Anchor>
 					<ScreenReaderOnly>More Info</ScreenReaderOnly>

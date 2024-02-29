@@ -58,8 +58,8 @@ export default function CreatePostPage() {
 
 	async function addPost(post) {
 		const updatedObject = { ...post, imageURL: imageSrc };
-		// check postData with imageURL
-		console.log("updatedObject", updatedObject);
+		// // check postData with imageURL
+		// console.log("updatedObject", updatedObject);
 
 		const response = await fetch("/api/posts", {
 			method: "POST",
@@ -69,7 +69,7 @@ export default function CreatePostPage() {
 			body: JSON.stringify(updatedObject),
 		});
 
-		console.log("response ", response);
+		console.log("response from POST request in addPost", response);
 
 		if (response.ok) {
 			// mutate();
@@ -110,7 +110,6 @@ export default function CreatePostPage() {
 			<Form
 				onChange={handleOnChange}
 				onSubmit={addPost}
-				// method="post"
 				formName={"add-post"}
 				imageSrc={imageSrc}
 				uploadData={uploadData}

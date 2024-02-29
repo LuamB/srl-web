@@ -20,7 +20,7 @@
 
 	body,
 	main {
-		@apply w-screen min-h-screen p-1 font-mono bg-neutral-800 text-neutral-200;
+		@apply w-screen min-h-screen p-2 font-mono bg-neutral-800 text-neutral-200;
 	}
 
 	h1 {
