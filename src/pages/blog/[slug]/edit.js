@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import Form, { FormContainer, Label, Input } from "../../../components/Form.js";
 
 export default function EditPage() {
-	const router = useRouter(); // Add redirection logic using useRouter
+	const router = useRouter();
 	const { isReady } = router;
 	const { slug } = router.query;
 	const [imageScr, setImageSrc] = useState();
@@ -54,6 +54,9 @@ export default function EditPage() {
 	}
 
 	async function editPost(post) {
+		const updatedObject = { ...post, imageURL: imageSrc };
+		// check postData with imageURL
+		console.log("updatedObject", updatedObject);
 		try {
 			const response = await fetch(`/api/posts/${slug}`, {
 				method: "PATCH",

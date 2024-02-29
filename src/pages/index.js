@@ -10,17 +10,17 @@ export default function Home() {
 				// className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
 			>
 				<div className="h-60 border-solid border-b border-neutral-200 p-2">
-					<SectionHeading>ABOUT</SectionHeading>
-					{/* ... about content */}
-				</div>
-
-				<div className="h-60 border-solid border-b border-neutral-200 p-2">
-					<SectionHeading>BLOG</SectionHeading>
+					<SectionHeading>#BLOG</SectionHeading>
 					{/* ... blog content */}
 				</div>
 
 				<div className="h-60 border-solid border-b border-neutral-200 p-2">
-					<SectionHeading>DONATE</SectionHeading>
+					<SectionHeading>#ABOUT</SectionHeading>
+					{/* ... about content */}
+				</div>
+
+				<div className="h-60 border-solid border-b border-neutral-200 p-2">
+					<SectionHeading>#DONATE</SectionHeading>
 					{/* ... donate content */}
 				</div>
 			</section>

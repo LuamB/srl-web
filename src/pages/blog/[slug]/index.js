@@ -65,26 +65,30 @@ export default function DetailsPage() {
 						src={data.post[0].imageURL}
 						priority
 						fill
-						sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+						// sizes="(max-width: 768px) 100vw,
+						//   (max-width: 1200px) 50vw,
+						//   33vw"
 						alt=""
 						className="object-cover"
 					/>
 				</ImageContainer>
 			)}
-			<h2>{data.post[0].title}</h2>
-			<p>{data.post[0].content}</p>
+			<div className="uppercase text-center">
+				<h2>{data.post[0].title}</h2>
+			</div>
+			<div className="paragraph text-left">
+				<p>{data.post[0].content}</p>
+			</div>
 			<ButtonContainer>
 				<Link href={`/blog/${slug}/edit`} passHref legacyBehavior>
-					<Link className="bg-yellow font-bold text-black rounded-md p-2.5">
+					<Link className="bg-yellow font-bold text-black rounded-md p-2.5 m-1">
 						Edit
 					</Link>
 				</Link>
 				<button
 					onClick={deletePost}
 					type="button"
-					className="bg-red-800 text-white font-bold rounded-md p-2.5"
+					className="bg-red-800 font-bold text-white rounded-md p-2.5 m-1"
 				>
 					Delete
 				</button>
