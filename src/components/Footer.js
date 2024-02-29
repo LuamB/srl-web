@@ -34,10 +34,10 @@ export default function Footer() {
 	return (
 		<div className="flex items-center w-full h-16 mt-2 p-3 bg-neutral-900">
 			<ul className="flex items-center w-auto h-auto gap-6 text-sm">
-				{routes.map((route) => {
+				{routes.map((route, idx) => {
 					const { scroll, href, title } = route;
 					return (
-						<li key={title}>
+						<li key={idx}>
 							<Link
 								href={href}
 								scroll={scroll}

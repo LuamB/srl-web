@@ -69,7 +69,7 @@ export default function NavMobile() {
 											damping: 20,
 											delay: 0.1 + idx / 10,
 										}}
-										key={title}
+										key={idx}
 										className="w-full p-[0.08rem] rounded-xl bg-gradient-to-tr from-neutral-800 via-neutral-950 to-neutral-700"
 									>
 										<Link

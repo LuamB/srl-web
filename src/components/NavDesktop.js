@@ -37,10 +37,10 @@ export default function NavDesktop() {
 	return (
 		<div className="w-auto h-auto absolute inset-y-0 right-2 pr-2">
 			<ul className="hidden lg:flex lg:items-center gap-5 text-sm px-2 py-2 bg-transparent">
-				{routes.map((route) => {
+				{routes.map((route, idx) => {
 					const { scroll, href, title } = route;
 					return (
-						<li key={title}>
+						<li key={idx}>
 							<Link
 								href={href}
 								scroll={scroll}
@@ -64,10 +64,10 @@ export default function NavDesktop() {
 //   return (
 //     <div className="flex flex-row-reverse">
 //       <ul className="hidden lg:flex lg:items-center gap-6 text-sm">
-//       {routes.map((route) => {
+//       {routes.map((route, idx) => {
 //         const {scroll, href, title} = route;
 //         return (
-//           <li key={title}>
+//           <li key={idx}>
 //             <NavLink
 //             href={href}
 //             scroll={scroll}
