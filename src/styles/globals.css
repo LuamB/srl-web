@@ -3,26 +3,24 @@
 @import "tailwindcss/utilities";
 
 @layer base {
-	html {
-		box-sizing: border-box;
-	}
-
-	/* *,
-	*:before,
-	*:after {
-		box-sizing: inherit;
-	} */
 	*,
 	*::before,
 	*::after {
 		box-sizing: border-box;
 	}
 
-	body,
-	main {
-		@apply w-screen min-h-screen p-2 font-mono bg-neutral-800 text-neutral-200;
+	html {
+		/* background-image: url("/public/protest-tripoli-2021-02.svg");
+		background-size: cover;
+		background-attachment: fixed; */
+		@apply style="background-image: url("/public/protest-tripoli-2021-02.svg")";
 	}
 
+	body,
+	main {
+		@apply w-screen min-h-screen p-2 font-mono;
+	}
+	/* bg-neutral-800 text-neutral-200; */
 	h1 {
 		@apply text-3xl;
 	}
