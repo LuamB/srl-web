@@ -13,7 +13,6 @@ export default async function handler(request, response) {
 	switch (request.method) {
 		case "GET":
 			const post = await Post.find({ slug: slug });
-			console.log("post=======", post);
 
 			if (!post) {
 				return response.status(404).json({ status: "Not found" });
@@ -21,7 +20,19 @@ export default async function handler(request, response) {
 			return response.status(200).json({ post: post });
 
 		case "PATCH":
-			await Post.findOneAndUpdate({ slug: slug }, { $set: request.body });
+			const patchData = request.body;
+			patchData.slug = patchData.title
+				.toLowerCase()
+				.replace(/\s+/g, "-") // Replace spaces with -
+				.replace(/[^\w\-]+/g, "") // Remove all non-word chars
+				.replace(/\-\-+/g, "-") // Replace one or multiple - with single -
+				.replace(/^-+/, "") // Trim - from start of text
+				.replace(/-+$/, "") // Trim - from end of text; //add slug key with slugyfied title
+				.replace(/(\w)-(\w)/g, "$1$2"); // Handle cases where words are already joined with a dash
+			// await Post.findOneAndUpdate({ slug: slug }, { $set: request.body });
+			await Post.findOneAndUpdate({ slug: slug }, { $set: patchData });
+			// check updated slug
+			console.log("updated slug", patchData.slug);
 			return response.status(200).json({ status: "Post updated" });
 
 		case "DELETE":

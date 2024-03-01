@@ -30,12 +30,12 @@ export default function DetailsPage() {
 		isLoading,
 		error,
 	} = useSWR(slug ? `/api/posts/${slug}` : null); // if slug is available, fetch the data, otherwise return null for id
-	console.log("data: ", data);
 
 	if (!isReady || isLoading)
 		return <h2 className="align-center">Loading...</h2>;
 	if (error) return <h2 className="align-center">Error! </h2>;
 
+	console.log("data: ", data);
 	async function deletePost() {
 		if (confirm("Are you sure you want to delete this post?")) {
 			await fetch(`/api/posts/${slug}`, {
@@ -59,7 +59,7 @@ export default function DetailsPage() {
 					</Link>
 				</Link>
 			</div>
-			{data.post[0].imageUrl && (
+			{data && data.post && data.post[0] && (
 				<ImageContainer>
 					<Image
 						src={data.post[0].imageURL}
@@ -73,10 +73,10 @@ export default function DetailsPage() {
 					/>
 				</ImageContainer>
 			)}
-			<div className="uppercase text-center">
-				<h2>{data.post[0].title}</h2>
+			<div className="text-center">
+				<h2 className="uppercase my-2">{data.post[0].title}</h2>
 			</div>
-			<div className="paragraph text-left">
+			<div className="font-mono font-extralight text-left text-pretty">
 				<p>{data.post[0].content}</p>
 			</div>
 			<ButtonContainer>

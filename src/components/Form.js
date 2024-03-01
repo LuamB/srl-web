@@ -40,14 +40,14 @@ export default function Form({ onSubmit, formName, defaultData }) {
 				id="title"
 				name="title"
 				type="text"
-				// defaultValue={defaultData?.title}
+				defaultValue={defaultData?.title}
 			/>
 			<Label htmlFor="content">Content</Label>
 			<Textarea
 				name="content"
 				id="content"
 				cols="30"
-				rows="50"
+				rows="15"
 				defaultValue={defaultData?.content}
 			></Textarea>
 			<button

@@ -11,23 +11,23 @@ export default async function handler(request, response) {
 	} else if (request.method === "POST") {
 		try {
 			const postData = request.body;
-			postData.slug = postData.title.toLowerCase
+			postData.slug = postData.title
+				.toLowerCase()
 				.replace(/\s+/g, "-") // Replace spaces with -
 				.replace(/[^\w\-]+/g, "") // Remove all non-word chars
 				.replace(/\-\-+/g, "-") // Replace one or multiple - with single -
 				.replace(/^-+/, "") // Trim - from start of text
-				.replace(/-+$/, ""); // Trim - from end of text; //add slug key with slugyfied title
-			// postData.imageURL = postData.file
-			console.log("postData ", postData);
-			console.log("postData.file ", postData.file);
+				.replace(/-+$/, "") // Trim - from end of text; //add slug key with slugyfied title
+				.replace(/(\w)-(\w)/g, "$1$2"); // Handle cases where words are already joined with a dash
+			// // postData.imageURL = postData.file
+			// console.log("postData ", postData);
+			// console.log("postData.file ", postData.file);
 
 			const newPost = await Post.create(postData);
-			console.log("newPost ", newPost);
 			return response
 				.status(201) // status code for successful post creation
 				.json({ status: "Post created", post: newPost });
 		} catch (error) {
-			console.error(error);
 			//  Check if it's a validation error from Mongoose
 			if (error.name === "ValidationError") {
 				return response.status(400).json({ message: error.message }); // validation errors
@@ -38,6 +38,8 @@ export default async function handler(request, response) {
 			return response.status(500).json({ message: "Something went wrong" }); // other server errors
 		}
 	} else {
+		// check new post
+		console.log("newPost ", newPost);
 		// Respond to other methods, likely '405 - Method Not Allowed'
 		return response.status(405).json({ message: "Method not allowed" });
 	}
