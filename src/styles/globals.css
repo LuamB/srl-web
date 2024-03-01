@@ -10,8 +10,11 @@
 	}
 
 	html {
-		background-image: url("/protest-tripoli-2021-02.svg");
+		/* background-image: url("/protest-tripoli-2021-02.svg"); */
+		background-image: url("/13.jpg");
+		/* background-size: 100%; */
 		background-size: cover;
+		background-repeat: no-repeat;
 		background-attachment: fixed;
 		margin: 0;
 	}

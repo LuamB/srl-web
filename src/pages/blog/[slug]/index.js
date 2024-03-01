@@ -29,7 +29,7 @@ export default function DetailsPage() {
 
 	return (
 		<>
-			<div className="fixed top-8 left-4 mt-40">
+			<div className="fixed top-8 left-4 mt-40 z=100">
 				<Link href="/blog" passHref legacyBehavior>
 					<Link className="px-2.5 py-2 bg-yellow rounded-md font-bold text-black z-100">
 						back
@@ -37,7 +37,7 @@ export default function DetailsPage() {
 				</Link>
 			</div>
 			{data && data.post && data.post[0] && (
-				<article className="rounded-md shadow-md bg-neutral-900/50 backdrop-blur-md p-4 mb-6 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-40">
+				<article className="rounded-md shadow-md bg-neutral-900/75 backdrop-blur-md p-4 mb-6 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-40">
 					<div className="relative aspect-square h-48 overflow-hidden rounded-ms">
 						<Image
 							src={data.post[0].imageURL}
@@ -53,7 +53,7 @@ export default function DetailsPage() {
 						<h2 className="font-bold text-neutral-400 uppercase mt-1 mb-2">
 							{data.post[0].title}
 						</h2>
-						<p className="text-base font-light text-gray-400 line-clamp-3">
+						<p className="text-base font-light text-gray-400">
 							{data.post[0].content}
 						</p>
 						<div className="flex gap-2 mt-4">

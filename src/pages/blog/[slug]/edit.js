@@ -81,7 +81,7 @@ export default function EditPage() {
 			if (response.ok) {
 				// mutate(`/api/posts/${slug}`, post);
 				mutate();
-				router.push(`/blog/${slug}`); // router.back() we don't want to go back to the form
+				router.push(`/blog/`); // router.back() we don't want to go back to the form
 			} else {
 				throw new Error("Failed to update post");
 			}

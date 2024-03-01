@@ -1,11 +1,21 @@
 // import LogoHomeLink from "./LogoHomeLink";
 // import NavDesktop from "./NavDesktop";
 // import NavMobile from "./NavMobile";
-// import LogoHomeLink from "./LogoHomeLink";
+import LogoHomeLink from "./LogoHomeLink";
 // import NavDesktop from "./NavDesktop";
 // import NavMobile from "./NavMobile";
-import Image from "next/image";
-import logoIcon from "../../public/SRL-round.svg";
+// import Image from "next/image";
+// import logoIcon from "../../public/SRL-round.svg";
+
+export default function Header() {
+	return (
+		<div className="flex relative w-full h-40 mb-3 p-3 bg-neutral-900">
+			<LogoHomeLink />
+			{/* <NavDesktop />
+			<NavMobile /> */}
+		</div>
+	);
+}
 
 // export default function Header() {
 // 	return (
@@ -39,13 +49,3 @@ import logoIcon from "../../public/SRL-round.svg";
 // 		</header>
 // 	);
 // }
-
-export default function Header() {
-	return (
-		<div className="flex relative w-full h-40 mb-3 p-3 bg-neutral-900">
-			<LogoHomeLink />
-			{/* <NavDesktop />
-			<NavMobile /> */}
-		</div>
-	);
-}
