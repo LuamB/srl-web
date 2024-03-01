@@ -2,23 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
-import styled from "styled-components";
-
-// const ImageContainer = styled.div`
-// 	position: relative;
-// 	height: 15rem;
-// `;
-
-// const ButtonContainer = styled.section`
-// 	display: flex;
-// 	justify-content: space-between;
-// 	gap: 0.2rem;
-
-// 	& > * {
-// 		flex-grow: 1;
-// 		text-align: center;
-// 	}
-// `;
 
 export default function DetailsPage() {
 	const router = useRouter();
@@ -48,7 +31,7 @@ export default function DetailsPage() {
 		<>
 			<div className="fixed top-8 left-4">
 				<Link href="/blog" passHref legacyBehavior>
-					<Link className="px-2.5 py-2 bg-yellow rounded-md font-bold text-black z-10">
+					<Link className="px-2.5 py-2 bg-yellow rounded-md font-bold text-black z-100">
 						back
 					</Link>
 				</Link>
@@ -144,9 +127,19 @@ export default function DetailsPage() {
 // 		</>
 // 	);
 // }
+//
+// const ImageContainer = styled.div`
+// 	position: relative;
+// 	height: 15rem;
+// `;
 
-/* 
-<Comments
-  locationName={data?.post.name}
-  comments={data?.post.comments}
-> */
+// const ButtonContainer = styled.section`
+// 	display: flex;
+// 	justify-content: space-between;
+// 	gap: 0.2rem;
+
+// 	& > * {
+// 		flex-grow: 1;
+// 		text-align: center;
+// 	}
+// `;
