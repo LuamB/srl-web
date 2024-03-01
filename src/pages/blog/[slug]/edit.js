@@ -8,7 +8,7 @@ export default function EditPage() {
 	const router = useRouter();
 	const { isReady } = router;
 	const { slug } = router.query;
-	const [imageScr, setImageSrc] = useState();
+	const [imageSrc, setImageSrc] = useState();
 	const [uploadData, setUploadData] = useState();
 	const { data: post, isLoading, error, mutate } = useSWR(`/api/posts/${slug}`);
 	console.log("post: ", post);
@@ -53,37 +53,51 @@ export default function EditPage() {
 		setUploadData(data);
 	}
 
+	console.log("imageSrc", imageSrc);
+
 	async function editPost(post) {
+		// const editData = request.body;
+		// editData.slug = editData.title
+		// .toLowerCase()
+		// .replace(/\s+/g, "-") // Replace spaces with -
+		// .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+		// .replace(/\-\-+/g, "-") // Replace one or multiple - with single -
+		// .replace(/^-+/, "") // Trim - from start of text
+		// .replace(/-+$/, ""); // Trim - from end of text; //add slug key with slugyfied title
+		// Handle cases where words are already joined with a dash
+		// editData.slug = editData.slug.replace(/(\w)-(\w)/g, "$1$2");
+		// const titleToSlug = slugify(post.post[0].title);
+		// console.log("titleToSlug ", titleToSlug);
 		const updatedObject = { ...post, imageURL: imageSrc };
-		// check postData with imageURL
-		console.log("updatedObject", updatedObject);
 		try {
 			const response = await fetch(`/api/posts/${slug}`, {
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify(post),
+				body: JSON.stringify(updatedObject),
 			});
 
 			if (response.ok) {
 				// mutate(`/api/posts/${slug}`, post);
 				mutate();
-				router.back(); // faster than router.push('/blog/${slug}')
+				router.push(`/blog/${slug}`); // router.back() we don't want to go back to the form
 			} else {
 				throw new Error("Failed to update post");
 			}
-			// chech data
-			console.log("Post to edit", post.post[0]);
 		} catch (error) {
 			console.error("Error:", error);
 		}
+		// check postData with imageURL
+		console.log("updatedObject", updatedObject);
 	}
 
 	if (!isReady || isLoading)
 		return <h2 className="align-center">Loading...</h2>;
 	if (error) return <h2 className="align-center">Error! </h2>;
 
+	// chech data
+	console.log("Post to edit", post?.post[0]);
 	return (
 		<>
 			<h2 id="edit-post">Edit Post</h2>
@@ -106,10 +120,23 @@ export default function EditPage() {
 				</button>
 			</FormContainer>
 			<Form
+				onChange={handleOnChange}
 				onSubmit={editPost}
 				formName={"edit-post"}
+				imageSrc={imageSrc}
+				uploadData={uploadData}
 				defaultData={post?.post[0]} // if post obj exists, access post value, otherwise undefined
 			/>
 		</>
 	);
 }
+
+// export function slugify(title) {
+// 	return title
+// 		.toLowerCase()
+// 		.replace(/\s+/g, "-") // Replace spaces with -
+// 		.replace(/[^\w\-]+/g, "") // Remove all non-word chars
+// 		.replace(/\-\-+/g, "-") // Replace one or multiple - with single -
+// 		.replace(/^-+/, "") // Trim - from start of text
+// 		.replace(/-+$/, ""); // Trim - from end of text; //add slug key with slugyfied title
+// }

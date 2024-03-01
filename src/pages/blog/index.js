@@ -13,21 +13,34 @@ export default function BlogPage() {
 	if (isLoading) return <h2>Loading...</h2>;
 	if (error) return <h2>Error!</h2>;
 
+	// console.log("data in BlogPage", data);
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 				{data &&
-					data.map((post) => (
-						<BlogPreview
-							key={post.slug}
-							imageURL={post.imageURL}
-							title={post.title}
-							content={post.content}
-							slug={post.slug}
-						/>
-					))}
-			</div>
+					data.map((post) => {
+						{
+							console.log("imageURL ", post.imageURL);
+						}
+						return (
+							<li key={post.slug} className="relative w-full text-pretty">
+								<BlogPreview
+									imageURL={post.imageURL}
+									alt=""
+									title={post.title}
+									content={post.content}
+									slug={post.slug}
+								/>
+							</li>
+						);
+					})}
+			</ul>
+			<Link href="/blog/create" passHref legacyBehavior className="relative">
+				<Link className="fixed bottom-8 right-8 p-2 md:p-4 bg-yellow-400 rounded-md font-bold text-black">
+					+ post
+				</Link>
+			</Link>
 		</>
 	);
 }
