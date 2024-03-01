@@ -53,9 +53,7 @@ export default function BlogPreview({ slug, title, content, imageURL }) {
 				<h2 className="font-bold text-neutral-400 uppercase mt-1 mb-2">
 					{title}
 				</h2>
-				<p className="text-base font-light text-gray-400 line-clamp-3">
-					{partialContent}
-				</p>
+				<p className="text-base font-light text-gray-400">{partialContent}</p>
 				<Link href={`blog/${slug}`} passHref legacyBehavior>
 					<Anchor>
 						<ScreenReaderOnly>More Info</ScreenReaderOnly>

@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Link from "next/link.js";
 import BlogPreview from "../../components/BlogPreview";
+import { useRouter } from "next/router";
 // import SectionHeading from "../../components/SectionHeading";
 
 export default function BlogPage() {
