@@ -1,34 +1,42 @@
-// import Link from "next/link";
-// import Image from "next/image";
-
 import Link from "next/link";
 import Image from "next/image";
 
+const Article = ({ children }) => (
+	<article className="border-5 border-black border-solid rounded-0.8 p-0.5 backdrop-blur-md">
+		{children}
+	</article>
+);
+
+const ImageContainer = ({ children }) => (
+	<div className="relative h-40 overflow-hidden">{children}</div>
+);
+
+const Figure = ({ children }) => (
+	<figure className="relative m-0">{children}</figure>
+);
+
 export default function BlogPreview({ slug, title, content, imageURL }) {
+	// Split the content by sentence endings (". ", "! ", "? ").
+	const sentences = content?.split(/(?<=[.!?])\s+/);
+	// Take the first 5 sentences for the preview.
+	const partialContent = sentences?.slice(0, 5).join(". ");
+
 	return (
-		<Link href={`blog/${slug}`} passHref={true} legacyBehavior={true}>
-			<a className="group block aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden shadow-lg backdrop-filter backdrop-blur-md relative">
-				<div className="h-full">
-					{imageURL && (
-						<Image
-							src={imageURL}
-							alt=""
-							layout="responsive"
-							width={500}
-							height={500}
-							objectFit="cover"
-							className="object-cover"
-						/>
-					)}
-					<div className="absolute inset-0 flex flex-col items-center justify-center">
-						<h2 className="text-white text-2xl font-bold p-4 bg-black bg-opacity-50 group-hover:bg-opacity-75">
-							{title}
-						</h2>
-						<p className="text-gray-100 p-4 text-center">{content}</p>
-					</div>
-				</div>
-			</a>
-		</Link>
+		<Article>
+			<Figure>
+				{imageURL && (
+					<ImageContainer>
+						<Image src={imageURL} layout="fill" objectFit="cover" alt="" />
+					</ImageContainer>
+				)}
+				<figcaption className="my-2">{title}</figcaption>
+			</Figure>
+			<p className="font-mono font-extralight text-left">{partialContent}</p>
+			<Link href={`blog/${slug}`} passHref legacyBehavior>
+				{/* Use a visually hidden span with text for screen readers */}
+				<span className="sr-only">More Info</span>
+			</Link>
+		</Article>
 	);
 }
 
