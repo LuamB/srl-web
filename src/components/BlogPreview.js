@@ -31,13 +31,9 @@ export default function BlogPreview({ slug, title, content, imageURL }) {
 				)}
 				<figcaption className="my-2">{title}</figcaption>
 			</Figure>
-<<<<<<< HEAD
-			<p className="font-mono font-extralight text-left">{partialContent}</p>
-=======
 			<p className="font-mono font-extralight text-left text-pretty">
 				{partialContent}
 			</p>
->>>>>>> 6d81043bc8d14c305a0dc552fceeed259558aa74
 			<Link href={`blog/${slug}`} passHref legacyBehavior>
 				{/* Use a visually hidden span with text for screen readers */}
 				<span className="sr-only">More Info</span>

@@ -1,9 +1,5 @@
-// import useSWR from "swr";
-// import Link from "next/link.js";
-// import BlogPreview from "../../components/BlogPreview";
-// import SectionHeading from "../../components/SectionHeading";
-
 import useSWR from "swr";
+import Link from "next/link.js";
 import BlogPreview from "../../components/BlogPreview";
 import SectionHeading from "../../components/SectionHeading";
 
@@ -17,7 +13,7 @@ export default function BlogPage() {
 	return (
 		<>
 			<SectionHeading>BLOG</SectionHeading>
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+			<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 				{data &&
 					data.map((post) => {
 						{
