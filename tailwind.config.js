@@ -11,9 +11,7 @@ module.exports = {
 				yellow: "#f8cc49",
 			},
 			backgroundImage: {
-				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-				"gradient-conic":
-					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+				bg_image: "url('./public/protest-tripoli-2021-02.svg')",
 			},
 			fontFamily: {
 				mono: ["var(--font-ubuntu-mono)"],
