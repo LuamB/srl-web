@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import Link from "next/link.js";
 import BlogPreview from "../../components/BlogPreview";
-import SectionHeading from "../../components/SectionHeading";
+// import SectionHeading from "../../components/SectionHeading";
 
 export default function BlogPage() {
 	const { data, isLoading, error } = useSWR("/api/posts");
@@ -9,31 +9,32 @@ export default function BlogPage() {
 	if (isLoading) return <h2>Loading...</h2>;
 	if (error) return <h2>Error!</h2>;
 
-	// console.log("data in BlogPage", data);
 	return (
 		<>
-			<SectionHeading>BLOG</SectionHeading>
-			<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-				{data &&
-					data.map((post) => {
-						{
-							console.log("imageURL ", post.imageURL);
-						}
-						return (
-							<li key={post.slug} className="relative w-full text-pretty">
-								<BlogPreview
-									imageURL={post.imageURL}
-									alt=""
-									title={post.title}
-									content={post.content}
-									slug={post.slug}
-								/>
-							</li>
-						);
-					})}
-			</ul>
+			{/* <SectionHeading>BLOG</SectionHeading> */}
+			<div>
+				<ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+					{data &&
+						data.map((post) => {
+							{
+								console.log("imageURL ", post.imageURL);
+							}
+							return (
+								<li key={post.slug} className="relative w-full text-pretty">
+									<BlogPreview
+										imageURL={post.imageURL}
+										alt=""
+										title={post.title}
+										content={post.content}
+										slug={post.slug}
+									/>
+								</li>
+							);
+						})}
+				</ul>
+			</div>
 			<Link href="/blog/create" passHref legacyBehavior className="relative">
-				<Link className="fixed bottom-8 right-8 p-2 md:p-4 bg-yellow-400 rounded-md font-bold text-black">
+				<Link className="fixed top-8 right-4 p-1 bg-yellow rounded-md font-bold text-black">
 					+ post
 				</Link>
 			</Link>
