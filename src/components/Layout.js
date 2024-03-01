@@ -16,7 +16,7 @@ export default function Layout({ children }) {
 			<main className={`main ${ubuntuMono.variable} font-mono`}>
 				{children}
 			</main>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 }

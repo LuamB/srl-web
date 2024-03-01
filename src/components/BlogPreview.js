@@ -33,7 +33,7 @@ export default function BlogPreview({ slug, title, content, imageURL }) {
 	`;
 
 	return (
-		<article className="rounded-md shadow-md bg-neutral-900/75 backdrop-blur-md p-4 flex flex-col gap-4">
+		<article className="rounded-md shadow-md bg-neutral-900/75 backdrop-blur-md p-4 flex flex-col gap-4 mt-40">
 			{/* <div className="relative aspect-square h-48 overflow-hidden"> */}
 			<div className="relative aspect-w-1 aspect-h-1 h-48 overflow-hidden rounded-ms">
 				{imageURL && (
