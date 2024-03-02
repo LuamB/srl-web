@@ -29,16 +29,16 @@ export default function DetailsPage() {
 
 	return (
 		<>
-			<div className="fixed top-8 left-4 mt-40 z=100">
+			<div className="fixed top-40 left-8">
 				<Link href="/blog" passHref legacyBehavior>
-					<Link className="px-2.5 py-2 bg-yellow rounded-md font-bold text-black z-100">
+					<Link className="px-2.5 py-2 bg-yellow rounded-md font-bold text-black">
 						back
 					</Link>
 				</Link>
 			</div>
 			{data && data.post && data.post[0] && (
-				<article className="rounded-md shadow-md bg-neutral-900/75 backdrop-blur-md p-4 mb-6 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-40">
-					<div className="relative aspect-square h-48 overflow-hidden rounded-ms">
+				<article className="rounded-md shadow-md bg-neutral-900/75 backdrop-blur-md mb-6">
+					<div className="float-left aspect-image ml-4 mt-4 rounded-ms">
 						<Image
 							src={data.post[0].imageURL}
 							priority
@@ -49,13 +49,15 @@ export default function DetailsPage() {
 							className="object-contain w-full h-full rounded-sm"
 						/>
 					</div>
-					<div className="flex flex-row sm:flex-col ml-4">
-						<h2 className="font-bold text-neutral-400 uppercase mt-1 mb-2">
-							{data.post[0].title}
-						</h2>
-						<p className="text-base font-light text-gray-400">
-							{data.post[0].content}
-						</p>
+					<div>
+						<div className="ml-4 mt-8 pl-2">
+							<h2 className="font-bold text-neutral-400 uppercase mb-1">
+								{data.post[0].title}
+							</h2>
+							<p className="text-base font-light text-gray-400">
+								{data.post[0].content}
+							</p>
+						</div>
 						<div className="flex gap-2 mt-4">
 							<Link href={`/blog/${slug}/edit`} passHref legacyBehavior>
 								<Link className="bg-yellow font-bold text-black rounded-md p-2.5 m-1">
